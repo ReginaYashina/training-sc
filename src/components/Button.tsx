@@ -1,8 +1,9 @@
 import React from 'react';
 import { css, styled } from 'styled-components';
+import { myTheme } from '../styles/Theme.styled';
 
 type ButtonPropsType = {
-  buttonType?: 'primery' | 'outlined';
+  buttonType?: 'primary' | 'outlined';
 };
 
 export const Button = styled.button<ButtonPropsType>`
@@ -24,17 +25,31 @@ export const Button = styled.button<ButtonPropsType>`
   }
 
   ${(props) =>
-    props.buttonType === 'primery' &&
+    props.buttonType === 'primary' &&
     css<ButtonPropsType>`
-      background: #4e71fe;
-      color: #fff;
+      background: ${myTheme.colors.primary};
+      color: ${myTheme.colors.light};
+
+      &:hover {
+        color: ${myTheme.colors.primary};
+        border-color: ${myTheme.colors.primary};
+        background: transparent;
+				transitioall .3s easen
+      }
     `}
 
   ${(props) =>
     props.buttonType === 'outlined' &&
     css<ButtonPropsType>`
       background: transparent;
-      color: #4e71fe;
-      border-color: #4e71fe;
+      color: ${myTheme.colors.primary};
+      border-color: ${myTheme.colors.primary};
+
+      &:hover {
+        color: ${myTheme.colors.light};
+        border-color: transparent;
+        background: ${myTheme.colors.primary};
+        transition: all 0.3s ease;
+      }
     `}
 `;
